@@ -18,18 +18,15 @@ DELIMITER //
 CREATE PROCEDURE get_even(`start` INT, `end` INT)
 BEGIN
 	DECLARE i INT DEFAULT `start`;
-    DECLARE res_str TEXT DEFAULT NULL;
+    IF i % 2 != 0 THEN
+		SET i = i + 1;
+	END IF;
+    DECLARE result TEXT DEFAULT concat(i);
     WHILE  i <= `end` DO
-        IF i % 2 = 0 THEN
-			IF res_str IS NULL THEN
-				SET res_str = concat(i);
-			ELSE
-				SET res_str = concat(res_str, ', ', i);
-			END IF;
-		END IF;
-        SET i = i + 1;
+		SET res_str = concat(result, ', ', i);
+		SET i = i + 2;
     END WHILE;
-	SELECT res_str;
+	SELECT result;
 END //
 DELIMITER ;
 
