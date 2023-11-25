@@ -21,12 +21,12 @@ BEGIN
     IF i % 2 != 0 THEN
 		SET i = i + 1;
 	END IF;
-    DECLARE result TEXT DEFAULT concat(i);
+    DECLARE resul TEXT DEFAULT concat(i);
     WHILE  i <= `end` DO
-		SET res_str = concat(result, ', ', i);
+		SET resul = concat(result, ', ', i);
 		SET i = i + 2;
     END WHILE;
-	SELECT result;
+	SELECT resul;
 END //
 DELIMITER ;
 
